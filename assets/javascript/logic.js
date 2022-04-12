@@ -1,11 +1,25 @@
 var apiKey = "d71e2110a17bb00a09c9b529650035e0";
 var dailyDisplay = document.querySelector("#daily");
-var lat = latitude;
-var lon = longitude;
+var searchInputEl = document.querySelector('#search-input');
+var searchFormEl = document.querySelector('#search-form');
 
-console.log(lat);
-console.log(lon)
 
+var formSubmit = function (event) {
+  event.preventDefault();
+
+  var search = searchInputEl.value.trim();
+
+  if (search) {
+    console.log(search);
+
+    searchInputEl.value = '';
+  } else {
+    alert('Please enter a vaild city');
+  }
+  
+};
+
+// geoLoation is used to get lon an lat to input into getDaily requestUrl lon and lat but couldn't get it to work correctly
 function geoLocation() {
     var requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=SanDiego&limit=5&appid=' + apiKey;
     fetch(requestUrl)
@@ -14,20 +28,23 @@ function geoLocation() {
       })
       .then(function (data) {
          console.log(data);
-            var longitude = data[0].lon;
-            var latitude = data[0].lat;
+           var longitude = data[0].lon;
+           var latitude = data[0].lat;
+           var city = document.createElement('h2')
 
-            longitude.textContent = lon;
-            latitude.textContent = lat;
+           city.textContent = data[0].name + moment().format(" MMM Do YY");
 
-      })
+           dailyDisplay.append(city);
+
+           console.log(longitude);
+           console.log(latitude);
+    })
 }
 
 geoLocation();
 
 function getDaily() {
-    //var requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=SanDiego&limit=5&appid=' + apiKey;
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=-29.5992823&lon=51.9260001&units=imperial&exclude=hourly,minutely,alerts&appid=' + apiKey;
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=29.5992823&lon=-51.9260001&units=imperial&exclude=hourly,minutely,alerts&appid=' + apiKey;
     fetch(requestUrl)
       .then(function (response) {
         return response.json();
@@ -36,20 +53,16 @@ function getDaily() {
         console.log(data);
         //console.log(data.current.temp);
 
-        var city = document.createElement('h2')
         var temperature = document.createElement('p');
         var wind = document.createElement('p');
         var humidity = document.createElement('p');
         var uvi = document.createElement('p');
         
-        city.textContent = data.timezone; 
-        temperature.textContent = "Temperature: " + data.current.temp;
-        wind.textContent = "Wind: " + data.current.weather.wind_speed;
-        humidity.textContent = "Humidity: " + data.current.humidity;
+        temperature.textContent = "Temperature: " + data.current.temp + "°F";
+        wind.textContent = "Wind: " + data.current.wind_speed + " MPH";
+        humidity.textContent = "Humidity: " + data.current.humidity + "%";
         uvi.textContent = "UV-Index: " + data.current.uvi;
-        console.log(city);
 
-        dailyDisplay.append(city);
         dailyDisplay.append(temperature);
         dailyDisplay.append(wind);
         dailyDisplay.append(humidity);
@@ -57,4 +70,6 @@ function getDaily() {
       });
   }
 
-  //getDaily()
+  getDaily()
+
+  searchFormEl.addEventListener('submit', formSubmit);
