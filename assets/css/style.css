@@ -1,42 +1,45 @@
 * {
-    color: black;
-    font-family: monospace;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 header {
-    background-color: #5998ad;
-    width: 100%;
-    padding: 2px;
+  background-color: #7f898d;
+  width: 100%;
+  padding: 2px;
 }
 
 body {
-    background-color:rgb(185, 185, 185);
+  background-color: rgba(0, 255, 255, 0.411);
 }
 
 h1 {
-    margin-left: 40%;
+  margin-left: 40%;
 }
 
 .btn {
-    background-color: #5998ad;
-    padding: 2px;
-    margin: 8px;
+  background-color: rgba(0, 128, 0, 0.521);
+  padding: 2px;
+  margin: 8px;
+  border-radius: 3px;
 }
 
 .daily-style {
-    border: solid;
-    margin: 3px;
-    padding: 5px;
-    width: 69%;
-    margin-left: 25%;
-    margin-top: -125px;
+  border: solid;
+  margin: 3px;
+  padding: 5px;
+  width: 69%;
+  margin-left: 25%;
+  border-radius: 7px;
+  margin-top: -70px;
+  background-color: #7f898d86;
 }
 
 .search-card {
-    border: solid;
-    width: 20%;
-    margin-top: 30px;
-    padding: 8px;
-    margin-left: 15px;
+  border: solid 2px black;
+  width: 20%;
+  margin-top: 30px;
+  padding: 8px;
+  margin-left: 15px;
+  border-radius: 7px;
 }
-
