@@ -2,7 +2,7 @@
 
 ## Description
 
-My motivation for this webpage was challange my skills using API's. I built this so I could prove test my skills using backend API's. This app didn't get finished but it does show the current weather for San Diego. Further development will be needed.
+Don't weather about it is an app for users that want to check the weather by zip code. Users can input the zip code or city they would like to get weather data for and it will display all the weather essentials. After viewing a city or zip code it will be saved so users can view it the next time they are curious. 
 
 ## Contributing
 
